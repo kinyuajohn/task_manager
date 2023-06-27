@@ -39,7 +39,7 @@ def create_task(request):
     return render(request, "create-task.html", context=context)
 
 
-# READ a task
+# READ tasks
 def view_tasks(request):
     tasks = Task.objects.all()
 
@@ -48,3 +48,39 @@ def view_tasks(request):
     }
 
     return render(request, "view-tasks.html", context=context)
+
+
+# UPDATE a task
+def update_task(request, pk):
+    task = Task.objects.get(id=pk)
+    form = TaskForm(instance=task)
+
+    if request.method == "POST":
+        form = TaskForm(request.POST, instance=task)
+
+        if form.is_valid():
+            form.save()
+
+            return redirect("view-tasks")
+
+    context = {
+        "form": form,
+    }
+
+    return render(request, "update-task.html", context=context)
+
+
+# DELETE a task
+def delete_task(request, pk):
+    task = Task.objects.get(id=pk)
+
+    if request.method == "POST":
+        task.delete()
+
+        return redirect("view-tasks")
+
+    context = {
+        "object": task,
+    }
+
+    return render(request, "delete-task.html", context=context)
