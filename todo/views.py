@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+
+# from django.http import HttpResponse
 
 from .models import Task
 from .forms import TaskForm
@@ -7,11 +9,7 @@ from .forms import TaskForm
 
 
 def home(request):
-    query_single_object = Task.objects.get(id=5)
-
-    context = {"task": query_single_object}
-
-    return render(request, "index.html", context=context)
+    return render(request, "index.html")
 
 
 def register(request):
@@ -22,11 +20,31 @@ def my_login(request):
     return render(request, "my-login.html")
 
 
+# CREATE a task
 def create_task(request):
     form = TaskForm()
+
+    if request.method == "POST":
+        form = TaskForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+
+            return redirect("view-tasks")
 
     context = {
         "form": form,
     }
 
-    return render(request, "task-form.html", context=context)
+    return render(request, "create-task.html", context=context)
+
+
+# READ a task
+def view_tasks(request):
+    tasks = Task.objects.all()
+
+    context = {
+        "tasks": tasks,
+    }
+
+    return render(request, "view-tasks.html", context=context)

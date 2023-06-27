@@ -1,0 +1,9 @@
+{% include "base.html" %}
+
+<h2>CRUD - READ all tasks!</h2>
+
+{% for task in tasks %}
+<hr>
+<h3>{{ task.title }}</h3>
+{{ task.content }}
+{% endfor %}
