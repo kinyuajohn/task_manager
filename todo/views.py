@@ -1,26 +1,14 @@
 from django.shortcuts import render
 
-# from django.http import HttpResponse
-
+from .models import Task
 
 # Create your views here.
-def home(request):
-    client_list = [
-        {
-            "id": "1",
-            "name": "John Smith",
-            "profession": "Web Developer",
-        },
-        {
-            "id": "2",
-            "name": "Luke Warren",
-            "profession": "Accountant",
-        },
-    ]
 
-    context = {
-        "client_list": client_list,
-    }
+
+def home(request):
+    query_single_object = Task.objects.get(id=5)
+
+    context = {"task": query_single_object}
 
     return render(request, "index.html", context=context)
 

@@ -2,10 +2,8 @@
 
 <h2>This is our homepage!</h2>
 
-{% for client in client_list %}
-<p>{{ client.id }}</p>
-<br>
-<p>{{ client.name }}</p>
-<br>
-<p>{{ client.profession }}</p>
-{% endfor %}
+<hr>
+
+<p>{{ task.id }}. {{ task.title }}</p>
+<p>{{ task.content }}</p>
+<hr>
