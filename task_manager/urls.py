@@ -17,6 +17,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from django.http import HttpResponse
+
+
+def register(request):
+    return HttpResponse("This is a registration page.")
+
+
+def home(request):
+    return HttpResponse("This is my homepage.")
+
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
+    path("register", register),
+    path("", home),
 ]
