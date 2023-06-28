@@ -5,7 +5,7 @@ from . import views
 urlpatterns = [
     path("register/", views.register),
     path("my-login/", views.my_login),
-    path("", views.home),
+    path("", views.home, name=""),
     # CRUD operations
     # --------------------------------------------------------------------------
     # CREATE TASK
@@ -19,4 +19,10 @@ urlpatterns = [
     # --------------------------------------------------------------------------
     # Register a user
     path("register/", views.register, name="register"),
+    # Login a user
+    path("my-login/", views.my_login, name="my-login"),
+    # Dashboard
+    path("dashboard/", views.dashboard, name="dashboard"),
+    # Logout a user
+    path("user-logout/", views.user_logout, name="user-logout"),
 ]

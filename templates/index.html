@@ -14,8 +14,10 @@
 
 <body>
     <h2>This is our homepage!</h2>
-    <a href="{% url 'register' %}">Register a user</a>
-    <br><br><br>
+    <a href="{% url 'register' %}">Register</a>
+    <br><br>
+    <a href="{% url 'my-login' %}">Login</a>
+    <br><br>
     <img src="{% static 'images/fb.png' %}" alt="" style="width: 200px;">
     <br><br>
     <a href="{% url 'create-task' %}">Create a task</a>
