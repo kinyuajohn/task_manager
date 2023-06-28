@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 
-# from django.http import HttpResponse
+from django.http import HttpResponse
 
 from .models import Task
-from .forms import TaskForm
+from .forms import TaskForm, CreateUserForm
 
 # Create your views here.
 
@@ -84,3 +84,22 @@ def delete_task(request, pk):
     }
 
     return render(request, "delete-task.html", context=context)
+
+
+# Register/create a user
+def register(request):
+    form = CreateUserForm()
+
+    if request.method == "POST":
+        form = CreateUserForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+
+            return HttpResponse("User registered!")
+
+    context = {
+        "form": form,
+    }
+
+    return render(request, "register.html", context=context)
