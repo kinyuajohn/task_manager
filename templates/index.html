@@ -1,7 +1,28 @@
+{% load static %}
+
 {% include "base.html" %}
 
-<h2>This is our homepage!</h2>
+<!DOCTYPE html>
+<html lang="en">
 
-<a href="{% url 'create-task' %}">Create a task</a>
-<br><br>
-<a href="{% url 'view-tasks' %}">View tasks</a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+    <h2>This is our homepage!</h2>
+
+    <img src="{% static 'images/fb.png' %}" alt="" style="width: 200px;">
+
+    <br><br>
+    <a href="{% url 'create-task' %}">Create a task</a>
+    <br><br>
+    <a href="{% url 'view-tasks' %}">View tasks</a>
+
+    <script src="{% static 'js/app.js' %}"></script>
+</body>
+
+</html>
