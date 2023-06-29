@@ -12,11 +12,15 @@ urlpatterns = [
     # Dashboard
     path("dashboard/", views.dashboard, name="dashboard"),
     # --------------------------------------------------------------------------
-    # CRUD
+    # CRUD OPERATIONS ***
     # CREATE TASK
     path("create-task/", views.create_task, name="create-task"),
     # READ TASKS
     path("view-tasks/", views.view_tasks, name="view-tasks"),
+    # UPDATE TASK
+    path("update-task/<str:pk>/", views.update_task, name="update-task"),
+    # UPDATE TASK
+    path("delete-task/<str:pk>/", views.delete_task, name="delete-task"),
     # --------------------------------------------------------------------------
     # Logout a user
     path("user-logout/", views.user_logout, name="user-logout"),
