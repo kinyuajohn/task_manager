@@ -15,6 +15,8 @@ urlpatterns = [
     # CRUD
     # CREATE TASK
     path("create-task/", views.create_task, name="create-task"),
+    # READ TASKS
+    path("view-tasks/", views.view_tasks, name="view-tasks"),
     # --------------------------------------------------------------------------
     # Logout a user
     path("user-logout/", views.user_logout, name="user-logout"),

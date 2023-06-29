@@ -1,0 +1,34 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width-device-width, initial-scale=1, maximum-scale=1" />
+  <title>View Tasks</title>
+  <link rel="stylesheet" href="https://bootswatch.com/5/solar/bootstrap.min.css" />
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+</head>
+
+<body>
+  {% include "base.html" %}
+
+
+  <h3 class="container mt-5 form-layout">My Tasks</h3>
+
+  {% for task in tasks %}
+  <div class="container bg-white shadow-md p-3 mt-3 form-layout">
+    <h5>{{ task.title }}</h5>
+    <p>{{ task.content }}</p>
+
+    <a href="{% url 'view-tasks' %}" class="btn btn-primary navbar-btn">Update task</a>
+    <a href="{% url 'view-tasks' %}" class="btn btn-primary navbar-btn">Delete task</a>
+
+  </div>
+  {% endfor %}
+
+
+</body>
+
+</html>

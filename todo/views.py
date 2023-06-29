@@ -5,6 +5,7 @@ from django.contrib.auth.models import auth
 from django.contrib.auth.decorators import login_required
 
 from .forms import CreateUserForm, LoginForm, CreateTaskForm
+from .models import Task
 
 # Create your views here.
 
@@ -73,15 +74,30 @@ def create_task(request):
         form = CreateTaskForm(request.POST)
 
         if form.is_valid():
+            task = form.save(commit=False)
+            task.user = request.user
             form.save()
 
-            return redirect("dashboard")
+            return redirect("view-tasks")
 
     context = {
         "form": form,
     }
 
     return render(request, "profile/create-task.html", context=context)
+
+
+# View all tasks
+@login_required(login_url="my-login")
+def view_tasks(request):
+    current_user = request.user.id
+    tasks = Task.objects.all().filter(user=current_user)
+
+    context = {
+        "tasks": tasks,
+    }
+
+    return render(request, "profile/view-tasks.html", context=context)
 
 
 # Logout a user

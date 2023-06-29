@@ -27,6 +27,26 @@ class LoginForm(AuthenticationForm):
 
 # Create a task
 class CreateTaskForm(forms.ModelForm):
+    title = forms.CharField(
+        label="",
+        widget=forms.Textarea(
+            attrs={
+                "rows": "1",
+                "placeholder": "Title...",
+            }
+        ),
+    )
+
+    content = forms.CharField(
+        label="",
+        widget=forms.Textarea(
+            attrs={
+                "rows": "3",
+                "placeholder": "Say something...",
+            }
+        ),
+    )
+
     class Meta:
         model = Task
         fields = [
