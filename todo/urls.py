@@ -11,6 +11,11 @@ urlpatterns = [
     path("my-login/", views.my_login, name="my-login"),
     # Dashboard
     path("dashboard/", views.dashboard, name="dashboard"),
+    # --------------------------------------------------------------------------
+    # CRUD
+    # CREATE TASK
+    path("create-task/", views.create_task, name="create-task"),
+    # --------------------------------------------------------------------------
     # Logout a user
     path("user-logout/", views.user_logout, name="user-logout"),
 ]

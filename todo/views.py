@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import auth
 from django.contrib.auth.decorators import login_required
 
-from .forms import CreateUserForm, LoginForm
+from .forms import CreateUserForm, LoginForm, CreateTaskForm
 
 # Create your views here.
 
@@ -23,7 +23,7 @@ def register(request):
         if form.is_valid():
             form.save()
 
-            return HttpResponse("User registered!")
+            return redirect("my-login")
 
     context = {
         "form": form,
@@ -60,7 +60,28 @@ def my_login(request):
 # Dashboard
 @login_required(login_url="my-login")
 def dashboard(request):
-    return render(request, "dashboard.html")
+    return render(request, "profile/dashboard.html")
+
+
+# CRUD
+# Create task
+@login_required(login_url="my-login")
+def create_task(request):
+    form = CreateTaskForm()
+
+    if request.method == "POST":
+        form = CreateTaskForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+
+            return redirect("dashboard")
+
+    context = {
+        "form": form,
+    }
+
+    return render(request, "profile/create-task.html", context=context)
 
 
 # Logout a user
