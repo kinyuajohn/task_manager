@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 
 from .models import Task
 from .forms import TaskForm, CreateUserForm, LoginForm
@@ -124,6 +125,7 @@ def my_login(request):
 
 
 # Dashboard
+@login_required(login_url="my-login")
 def dashboard(request):
     return render(request, "dashboard.html")
 
