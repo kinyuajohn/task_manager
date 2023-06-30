@@ -7,7 +7,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width-device-width, initial-scale=1, maximum-scale=1" />
-  <title>Profile Management</title>
+  <title>Delete Account</title>
   <link rel="stylesheet" href="https://bootswatch.com/5/solar/bootstrap.min.css" />
   <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
 </head>
@@ -15,25 +15,21 @@
 <body>
   {% include "profile/base.html" %}
 
-  <h3 class="container mt-3 form-layout">Manage your profile</h3>
+  <h3 class="container mt-3 form-layout">Delete Account</h3>
   <hr>
 
   <div class="container bg-white shadow-md p-3 mt-3 form-layout">
-    <h3>Update your profile</h3>
+    <h3>Delete your account</h3>
 
     <form action="" method="POST" autocomplete="off">
       {% csrf_token %}
 
-      {{ user_form|crispy }}
+      <p>Are you sure that you want to delete this account?</p>
 
-      <input type="submit" value="Update profile" class="btn btn-danger navbar-btn">
-      <a href="{% url 'dashboard' %}" class="btn btn-primary navbar-btn">Go back</a>
+      <input type="submit" value="Delete Account" class="btn btn-danger navbar-btn">
+
+      <a href="{% url 'profile-management' %}" class="btn btn-primary navbar-btn">Go back</a>
     </form>
-  </div>
-
-  <div class="container bg-white shadow-md p-3 mt-5 form-layout">
-    <h4>Delete your account</h4>
-    <a href="{% url 'delete-account' %}" class="btn btn-danger navbar-btn">Delete account</a>
   </div>
 
 </body>

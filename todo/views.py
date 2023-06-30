@@ -5,7 +5,7 @@ from django.contrib.auth.models import auth
 from django.contrib.auth.decorators import login_required
 
 from .forms import CreateUserForm, LoginForm, CreateTaskForm, UpdateUserForm
-from .models import Task
+from .models import Task, User
 
 # Create your views here.
 
@@ -82,6 +82,18 @@ def profile_management(request):
     }
 
     return render(request, "profile/profile-management.html", context=context)
+
+
+# Delete account
+@login_required(login_url="my-login")
+def delete_account(request):
+    if request.method == "POST":
+        delete_user = User.objects.get(username=request.user)
+        delete_user.delete()
+
+        return redirect("")
+
+    return render(request, "profile/delete-account.html")
 
 
 # CRUD

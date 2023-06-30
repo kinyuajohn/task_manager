@@ -13,6 +13,8 @@ urlpatterns = [
     path("dashboard/", views.dashboard, name="dashboard"),
     # Profile management
     path("profile-management/", views.profile_management, name="profile-management"),
+    # Delete account
+    path("delete-account/", views.delete_account, name="delete-account"),
     # --------------------------------------------------------------------------
     # CRUD OPERATIONS ***
     # CREATE TASK
