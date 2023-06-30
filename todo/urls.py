@@ -11,6 +11,8 @@ urlpatterns = [
     path("my-login/", views.my_login, name="my-login"),
     # Dashboard
     path("dashboard/", views.dashboard, name="dashboard"),
+    # Profile management
+    path("profile-management/", views.profile_management, name="profile-management"),
     # --------------------------------------------------------------------------
     # CRUD OPERATIONS ***
     # CREATE TASK

@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import auth
 from django.contrib.auth.decorators import login_required
 
-from .forms import CreateUserForm, LoginForm, CreateTaskForm
+from .forms import CreateUserForm, LoginForm, CreateTaskForm, UpdateUserForm
 from .models import Task
 
 # Create your views here.
@@ -62,6 +62,26 @@ def my_login(request):
 @login_required(login_url="my-login")
 def dashboard(request):
     return render(request, "profile/dashboard.html")
+
+
+# Profile management
+@login_required(login_url="my-login")
+def profile_management(request):
+    if request.method == "POST":
+        user_form = UpdateUserForm(request.POST, instance=request.user)
+
+        if user_form.is_valid():
+            user_form.save()
+
+            return redirect("dashboard")
+
+    user_form = UpdateUserForm(instance=request.user)
+
+    context = {
+        "user_form": user_form,
+    }
+
+    return render(request, "profile/profile-management.html", context=context)
 
 
 # CRUD

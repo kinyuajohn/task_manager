@@ -11,12 +11,7 @@ from .models import Task
 class CreateUserForm(UserCreationForm):
     class Meta:
         model = User
-        fields = [
-            "username",
-            "email",
-            "password1",
-            "password2",
-        ]
+        fields = ["username", "email", "password1", "password2"]
 
 
 # Login a user
@@ -29,30 +24,25 @@ class LoginForm(AuthenticationForm):
 class CreateTaskForm(forms.ModelForm):
     title = forms.CharField(
         label="",
-        widget=forms.Textarea(
-            attrs={
-                "rows": "1",
-                "placeholder": "Title...",
-            }
-        ),
+        widget=forms.Textarea(attrs={"rows": "1", "placeholder": "Title..."}),
     )
 
     content = forms.CharField(
         label="",
-        widget=forms.Textarea(
-            attrs={
-                "rows": "3",
-                "placeholder": "Say something...",
-            }
-        ),
+        widget=forms.Textarea(attrs={"rows": "3", "placeholder": "Say something..."}),
     )
 
     class Meta:
         model = Task
-        fields = [
-            "title",
-            "content",
-        ]
-        exclude = [
-            "user",
-        ]
+        fields = ["title", "content"]
+        exclude = ["user"]
+
+
+# Update a user
+class UpdateUserForm(forms.ModelForm):
+    password = None
+
+    class Meta:
+        model = User
+        fields = ["username", "email"]
+        exclude = ["password1", "password2"]
