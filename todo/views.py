@@ -104,7 +104,6 @@ def view_tasks(request):
 @login_required(login_url="my-login")
 def update_task(request, pk):
     task = Task.objects.get(id=pk)
-
     form = CreateTaskForm(instance=task)
 
     if request.method == "POST":
@@ -119,6 +118,18 @@ def update_task(request, pk):
     }
 
     return render(request, "profile/update-task.html", context=context)
+
+
+# Delete a task
+def delete_task(request, pk):
+    task = Task.objects.get(id=pk)
+
+    if request.method == "POST":
+        task.delete()
+
+        return redirect("view-tasks")
+
+    return render(request, "profile/delete-task.html")
 
 
 # Logout a user

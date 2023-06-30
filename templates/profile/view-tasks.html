@@ -23,7 +23,7 @@
     <p>{{ task.content }}</p>
 
     <a href="{% url 'update-task' task.id %}" class="btn btn-primary navbar-btn">Update task</a>
-    <a href="{% url 'view-tasks' %}" class="btn btn-primary navbar-btn">Delete task</a>
+    <a href="{% url 'delete-task' task.id %}" class="btn btn-primary navbar-btn">Delete task</a>
 
   </div>
   {% endfor %}

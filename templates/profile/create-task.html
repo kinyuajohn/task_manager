@@ -5,26 +5,26 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width-device-width, initial-scale=1, maximum-scale=1" />
-    <title>Create Task</title>
-    <link rel="stylesheet" href="https://bootswatch.com/5/solar/bootstrap.min.css" />
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width-device-width, initial-scale=1, maximum-scale=1" />
+  <title>Create Task</title>
+  <link rel="stylesheet" href="https://bootswatch.com/5/solar/bootstrap.min.css" />
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
 </head>
 
 <body>
-    {% include "base.html" %}
-    <div class="container bg-white shadow-md p-5 mt-5 form-layout">
-        <h3>Create a Task</h3>
+  {% include "base.html" %}
+  <div class="container bg-white shadow-md p-5 mt-5 form-layout">
+    <h3>Create a Task</h3>
 
-        <form action="" method="POST" autocomplete="off">
-            {% csrf_token %}
+    <form action="" method="POST" autocomplete="off">
+      {% csrf_token %}
 
-            {{ form|crispy }}
+      {{ form|crispy }}
 
-            <input type="submit" value="Create Task" class="btn btn-primary navbar-btn">
-        </form>
-    </div>
+      <input type="submit" value="Create Task" class="btn btn-primary navbar-btn">
+    </form>
+  </div>
 
 </body>
 
