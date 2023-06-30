@@ -12,18 +12,19 @@
 </head>
 
 <body>
-  {% include "base.html" %}
+  {% include "profile/base.html" %}
 
-
-  <h3 class="container mt-5 form-layout">My Tasks</h3>
+  <h3 class="container mt-3 form-layout">My Tasks</h3>
+  <hr>
 
   {% for task in tasks %}
   <div class="container bg-white shadow-md p-3 mt-3 form-layout">
     <h5>{{ task.title }}</h5>
     <p>{{ task.content }}</p>
 
-    <a href="{% url 'update-task' task.id %}" class="btn btn-primary navbar-btn">Update task</a>
-    <a href="{% url 'delete-task' task.id %}" class="btn btn-primary navbar-btn">Delete task</a>
+    <a href="{% url 'update-task' task.id %}" class="btn btn-outline-primary navbar-btn">Update task</a>
+    &nbsp;
+    <a href="{% url 'delete-task' task.id %}" class="btn btn-outline-danger navbar-btn">Delete task</a>
 
   </div>
   {% endfor %}

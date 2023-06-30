@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
+  <div class="container">
+    <a class="navbar-brand main-heading">My Task Manager</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto">
+        &nbsp; &nbsp; &nbsp;
+
+        <li class="nav-item">
+          <a class="btn btn-outline-primary navbar-btn" type="button" href="{% url 'dashboard' %}">Dashboard</a>
+        </li>
+
+        &nbsp; &nbsp;
+
+        <li class="nav-item">
+          <a class="btn btn-outline-primary navbar-btn" type="button" href="{% url 'create-task' %}">Create task</a>
+        </li>
+
+        &nbsp; &nbsp;
+
+        <li class="nav-item">
+          <a class="btn btn-outline-primary navbar-btn" type="button" href="{% url 'view-tasks' %}">View tasks</a>
+        </li>
+
+        &nbsp; &nbsp;
+
+        <li class="nav-item ml-auto">
+          <a class="btn btn-outline-danger navbar-btn" type="button" href="{% url 'user-logout' %}">Logout</a>
+        </li>
+
+        &nbsp; &nbsp;
+      </ul>
+    </div>
+  </div>
+</nav>

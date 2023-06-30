@@ -13,8 +13,12 @@
 </head>
 
 <body>
-  {% include "base.html" %}
-  <div class="container bg-white shadow-md p-5 mt-5 form-layout">
+  {% include "profile/base.html" %}
+
+  <h3 class="container mt-3 form-layout">Delete Task</h3>
+  <hr>
+
+  <div class="container bg-white shadow-md p-3 mt-3 form-layout">
     <h3>Delete a Task</h3>
 
     <form action="" method="POST" autocomplete="off">
@@ -22,7 +26,7 @@
 
       <p>Are you sure that you want to delete this task?</p>
 
-      <input type="submit" value="Delete Task" class="btn btn-primary navbar-btn">
+      <input type="submit" value="Delete Task" class="btn btn-danger navbar-btn">
 
       <a href="{% url 'view-tasks' %}" class="btn btn-primary navbar-btn">Go back</a>
     </form>

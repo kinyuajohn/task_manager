@@ -12,10 +12,13 @@
 </head>
 
 <body>
-  {% include "base.html" %}
+  {% include "profile/base.html" %}
 
-  <div class="container bg-white shadow-md p-5 mt-5 form-layout">
-    <h3>This is our Dashboard!</h3>
+  <h3 class="container mt-3 form-layout">Dashboard</h3>
+  <hr>
+
+  <div class="container bg-white shadow-md p-3 mt-3 form-layout text-center">
+    <!-- <h3>This is our Dashboard!</h3> -->
 
     <a href="{% url 'create-task' %}" class="btn btn-primary navbar-btn">Create a task</a>
 

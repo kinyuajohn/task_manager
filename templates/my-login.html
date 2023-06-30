@@ -13,7 +13,8 @@
 </head>
 
 <body>
-  {% include "base.html" %}
+
+  {% include 'pre-base.html' %}
 
   <div class="container bg-white shadow-md p-5 mt-5 form-layout">
     <h3>Login Page!</h3>
@@ -23,7 +24,9 @@
 
       {{ form|crispy }}
 
-      <input type="submit" value="Login" class="btn btn-primary navbar-btn">
+      <input type="submit" value="Login" class="btn btn-primary navbar-btn mb-2">
+
+      <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
     </form>
   </div>
 
