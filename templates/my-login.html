@@ -26,10 +26,28 @@
 
       <input type="submit" value="Login" class="btn btn-primary navbar-btn mb-2">
 
+
+      {% for message in messages %}
+      {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+      <p id="message-timer" class="alert alert-primary float-center text-center message-text mt-2">
+        {{ message }}
+      </p>
+      {% endif %}
+      {% endfor %}
+
+
       <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
     </form>
   </div>
 
+
+  <script src="{% static 'js/app.js' %}"></script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
 
 </body>
 

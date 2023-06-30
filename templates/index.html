@@ -26,13 +26,13 @@
         &nbsp; &nbsp; &nbsp;
 
         <li class="nav-item">
-          <a class="btn btn-primary navbar-btn" type="button" href="{% url 'register' %}">Register</a>
+          <a class="btn btn-outline-primary navbar-btn" type="button" href="{% url 'register' %}">Register</a>
         </li>
 
         &nbsp; &nbsp;
 
         <li class="nav-item">
-          <a class="btn btn-primary navbar-btn" type="button" href="{% url 'my-login' %}">Login</a>
+          <a class="btn btn-outline-primary navbar-btn" type="button" href="{% url 'my-login' %}">Login</a>
         </li>
 
         &nbsp; &nbsp; &nbsp;
@@ -48,11 +48,13 @@
   <br />
 
   <div class="text-center">
-    <h3>Task Manager .... A home for your tasks.</h3>
+    <h3>Task Manager ... A home for your tasks.</h3>
 
     <br />
 
-    <a class="btn btn-outline-primary" type="button" href="{% url 'register' %}">Register</a>
+    <a class="btn btn-primary" type="button" href="{% url 'register' %}">Register</a>
+    &nbsp;
+    <a class="btn btn-danger" type="button" href="{% url 'my-login' %}">Login</a>
   </div>
 
   <script src="{% static 'js/app.js' %}"></script>

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import auth
 from django.contrib.auth.decorators import login_required
@@ -23,6 +24,8 @@ def register(request):
 
         if form.is_valid():
             form.save()
+
+            messages.success(request, "User registration was successful")
 
             return redirect("my-login")
 
