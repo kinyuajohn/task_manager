@@ -5,8 +5,14 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import auth
 from django.contrib.auth.decorators import login_required
 
-from .forms import CreateUserForm, LoginForm, CreateTaskForm, UpdateUserForm
-from .models import Task, User
+from .forms import (
+    CreateUserForm,
+    LoginForm,
+    CreateTaskForm,
+    UpdateUserForm,
+    UpdateProfileForm,
+)
+from .models import Task, User, Profile
 
 # Create your views here.
 
@@ -23,7 +29,11 @@ def register(request):
         form = CreateUserForm(request.POST)
 
         if form.is_valid():
+            current_user = form.save(commit=False)
+
             form.save()
+
+            profile = Profile.objects.create(user=current_user)
 
             messages.success(request, "User registration was successful")
 
@@ -64,12 +74,23 @@ def my_login(request):
 # Dashboard
 @login_required(login_url="my-login")
 def dashboard(request):
-    return render(request, "profile/dashboard.html")
+    profile_pic = Profile.objects.get(user=request.user)
+    context = {
+        "profile": profile_pic,
+    }
+
+    return render(request, "profile/dashboard.html", context=context)
 
 
 # Profile management
 @login_required(login_url="my-login")
 def profile_management(request):
+    user_form = UpdateUserForm(instance=request.user)
+
+    profile = Profile.objects.get(user=request.user)
+
+    form_2 = UpdateProfileForm(instance=profile)
+
     if request.method == "POST":
         user_form = UpdateUserForm(request.POST, instance=request.user)
 
@@ -78,10 +99,16 @@ def profile_management(request):
 
             return redirect("dashboard")
 
-    user_form = UpdateUserForm(instance=request.user)
+        form_2 = UpdateProfileForm(request.POST, request.FILES, instance=profile)
+
+        if form_2.is_valid():
+            form_2.save()
+
+            return redirect("dashboard")
 
     context = {
         "user_form": user_form,
+        "form_2": form_2,
     }
 
     return render(request, "profile/profile-management.html", context=context)

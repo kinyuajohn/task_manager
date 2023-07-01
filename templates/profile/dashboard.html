@@ -20,6 +20,9 @@
   <div class="container bg-white shadow-md p-3 mt-3 form-layout text-center">
     <!-- <h3>This is our Dashboard!</h3> -->
 
+    <img src="{{ profile.profile_pic.url }}" alt="" style="width: 200px;" class="mb-5">
+    <br>
+
     <a href="{% url 'create-task' %}" class="btn btn-primary navbar-btn">Create a task</a>
 
     <a href="{% url 'view-tasks' %}" class="btn btn-primary navbar-btn">View tasks</a>
