@@ -153,7 +153,7 @@ def create_task(request):
 @login_required(login_url="my-login")
 def view_tasks(request):
     current_user = request.user.id
-    tasks = Task.objects.all().filter(user=current_user)
+    tasks = Task.objects.all().filter(user=current_user).order_by("-date_posted")
 
     context = {
         "tasks": tasks,
