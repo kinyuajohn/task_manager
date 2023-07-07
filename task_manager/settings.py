@@ -32,7 +32,9 @@ SECRET_KEY = config("MY_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("MY_DEBUG", cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "taskmanagerapp-krvz.onrender.com",
+]
 
 
 # Application definition
